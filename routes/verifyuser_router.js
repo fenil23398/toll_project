@@ -6,7 +6,7 @@ router.get('/:otp/:id', function (req, res) {
 
     //console.log("lkajsdlkajsdljasd    "+Users.verifyUser('parth.soni0210@gmail.com',1234));
     Users.verifyUser(req.params.id, req.params.otp, function (err, rows) {
-        console.log(rows[0]);
+        // console.log(rows[0]);
 
         if (err) {
             console.log("error in verify user");
@@ -14,7 +14,7 @@ router.get('/:otp/:id', function (req, res) {
         }
         else {
 
-            if (rows[0] === undefined) {
+            if (rows.length<1) {
                 console.log('Not Valid otp');
                 var resu = { result: "false in otp " };
                 return res.json(resu);

@@ -43,6 +43,7 @@ var userss = {
         return db.query("update user set user_password=? where user_id=?",[pass,id],callback);
     },
     verifyUser:function(email,otp,callback){  
+        // console.log("select user_id from user where user_otp=? and MINUTE(CURRENT_TIMESTAMP-otp_timestamp)<16 and user_email=?",[otp,email])
         return db.query("select user_id from user where user_otp=? and MINUTE(CURRENT_TIMESTAMP-otp_timestamp)<16 and user_email=?",[otp,email],callback);
         // return db.query("select otp_timestamp from user where user_email=?",[email],callback);
     },
